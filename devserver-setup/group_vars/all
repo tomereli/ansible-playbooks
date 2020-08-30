@@ -1,0 +1,14 @@
+---
+users:
+    - username: tbeliyah
+      name: Tomer Eliyahu
+      groups: ['wheel']
+      ssh_key:
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9zGqedCNvq0gZxk0BsqsZwQgYWE0D3UNioE3dxQ2v8WVa4J9AOecs1GrzcCqnXU/I/yKHNC/+cDurgeb7QFsGZR0MuqzHL1olmtDmytudkIeZKjHTCtSPpaHUrA6ypVnEuLRKNBKyr6hs7oi8zpp8vsqs48vszg7xcdylbfurXT/N8Ow4i0iw6hcF0f5fgrBQpYoBhCwpCQ17M8acpXaN0Zr0bh8cFWRsLuj4qSaJy2R190cxSVDUHN1AFamvngbGKq9+IXYUflnaT8H/hPjLnt0fB7dVMh7T09TDNe7kFsrQos5uKIPzQsoW+9mIbxAM5hzEFlY1yP+IlTZDl2+n tbeliyah@elitpts10"
+        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDp8IyGhH0NW6STgtpwgZ1HRi8rnMg1kYVCTabk/NIXmY5XlhJwa33+gbobLVWO6o8a1JTpJ8qrp3SfmYrnrqG9dM50lEAZ+kUWT7VcriDvsQGZcIVFJYZ2/ktK+6jkdbMFnxiAJkKielGjZMOCPb3a3w/Xnv6qSl0tX/7Guy7Q9MPphG5RyxJauXyN5fq883ll5p/dC/AT8/8k2RQDM8D5XYz+prGNJ1cvuZTaVExYTmpMAdlGe9jDQsUbRiRPZ0RAwDwV9Foe14L9k4w5xQXZ+JTaFvVWujj7NaiOSQzjuhSwcpivHYRoeb3qbhalRHVBbt1V/mMWeYaLb4J6sNoi8szbExv0e8+slDKrKNWxClDH9A+ViBk4wX1XD97g1H3gSYqaYPvIMQz8p5iG3aFkoxEvYps+slPjxJ0kAI0HUe0HaHsQDM8rpKu7oKMSjPcS03TUyZoxz5trdKKv6V2vqicM/+RYkQ03cEeszlaj70uiBOLK2oCuOfKzDgM8I/c= tbeliyah@tbeliyah-MOBL"
+
+proxy_env:
+    http_proxy: "{{ lookup('env','http_proxy') }}"
+    https_proxy: "{{ lookup('env','https_proxy') }}"
+    ftp_proxy: "{{ lookup('env','ftp_proxy') }}"
+    no_proxy: "{{ lookup('env','no_proxy') }}"

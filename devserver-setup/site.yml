@@ -1,0 +1,15 @@
+---
+- hosts: all
+  environment: "{{ proxy_env }}"
+  become: True
+  
+  pre_tasks:
+    - name: hostnamectl set-hostname
+      shell: hostnamectl set-hostname {{ inventory_hostname }}
+      when: inventory_hostname is defined
+  
+  roles:
+    - singleplatform-eng.users
+    - andrewrothstein.go
+    - tomereli.proxy
+    - tomereli.oh_my_zsh_p10k
