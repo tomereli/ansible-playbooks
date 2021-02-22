@@ -10,6 +10,17 @@
   
   roles:
     - singleplatform-eng.users
-    - andrewrothstein.go
     - tomereli.proxy
     - tomereli.oh_my_zsh_p10k
+    - geerlingguy.docker
+    - andrewrothstein.go
+  
+  post_tasks:
+    - name: add go to path (~/.zshrc)
+      lineinfile:
+        path: ~/.zshrc
+        line: path+=~/go/bin
+      with_items: '{{users}}'
+      become: yes
+      become_user: '{{item.username}}'
+      when: users is defined

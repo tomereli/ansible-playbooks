@@ -1,5 +1,8 @@
 ---
 - name: singleplatform-eng.users
+- src: https://github.com/tomereli/ansible-role-docker
+  version: master
+  name: geerlingguy.docker
 - name: andrewrothstein.go
 - name: tomereli.proxy
 - name: tomereli.oh_my_zsh_p10k
