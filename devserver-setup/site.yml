@@ -8,18 +8,32 @@
       shell: hostnamectl set-hostname {{ inventory_hostname }}
       when: inventory_hostname is defined
   
-  roles:
-    - singleplatform-eng.users
-    - tomereli.proxy
-    - tomereli.oh_my_zsh_p10k
-    - geerlingguy.docker
-    - andrewrothstein.go
+  # roles:
+  #   - singleplatform-eng.users
+  #   - tomereli.proxy
+  #   - tomereli.oh_my_zsh_p10k
+  #   - geerlingguy.docker
+  #   - andrewrothstein.go
   
   post_tasks:
     - name: add go to path (~/.zshrc)
       lineinfile:
         path: ~/.zshrc
         line: path+=~/go/bin
+      with_items: '{{users}}'
+      become: yes
+      become_user: '{{item.username}}'
+      when: users is defined
+    
+    - name: User Configuration - Copy .aliases
+      copy: src=.aliases dest=/home/{{item.username}}/.aliases owner={{item.username}} group={{item.username}}
+      with_items: '{{users}}'
+      when: users is defined
+    
+    - name: User Configuration - Update .zshrc to use .aliases
+      lineinfile:
+        path: ~/.zshrc
+        line: source ~/.aliases
       with_items: '{{users}}'
       become: yes
       become_user: '{{item.username}}'
